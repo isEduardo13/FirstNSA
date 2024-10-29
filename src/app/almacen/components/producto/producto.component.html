@@ -1,0 +1,29 @@
+<!-- <p>Producto stock!</p>
+<h1>{{nombre}}</h1>
+<h5>{{stock}}</h5>
+@if (stock == 0) {
+  <h1>Producto sin stock</h1>
+}@else{
+  <h5>Stock del producto: {{stock}}</h5>
+  <button (click)="comprarProducto()">Comprar</button>
+} -->
+
+<br>
+<div>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="Producto.imagen" class="img-fluid rounded-start" alt="{{Producto.nombre}}">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{Producto.nombre}}</h5>
+        <p class="card-text">Cantidad <span [ngClass]="{'text-danger': Producto.stock ===0, 'text-primary': Producto.stock > 0}">{{Producto.stock}}</span> </p>
+        <p class="card-text"><small class="text-muted">{{Producto.precio | currency}}</small></p>
+        <p><small> {{Producto.fecha | date}}</small> </p>
+        <button class="btn-primary">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
