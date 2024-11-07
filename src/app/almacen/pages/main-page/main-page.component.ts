@@ -1,18 +1,28 @@
+import { AlmacenService } from './../../services/almacen.service';
 import { Producto } from './../../interfaces/Producto.interface';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductoComponent } from '../../components/producto/producto.component';
-import { AlmacenService } from '../../services/almacen.service';
-
+import { CategoriaDTO } from '../../interfaces/categoria.interface';
 @Component({
   selector: 'app-almacen-main-page',
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit{
 listaProductos: Producto []=[];
-constructor(alacenService : AlmacenService){
-  this.listaProductos = alacenService.listaProductos;
+listaCategorias: CategoriaDTO[] = [];
+
+constructor( private almacenService : AlmacenService){
+  this.listaProductos = almacenService.listaProductos;
+  this.almacenService.getCategorias().subscribe((categorias => {
+    this.listaCategorias = categorias;
+  }
+  ));
 }
 
+ngOnInit(): void {
+
+
+}
 
 }

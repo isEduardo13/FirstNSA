@@ -8,8 +8,6 @@
   <button (click)="comprarProducto()">Comprar</button>
 } -->
 
-<br>
-<div>
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
@@ -26,4 +24,21 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Categoria of listaCategorias">
+        <td>{{Categoria.id}}</td>
+        <td>{{Categoria.nombreCategoria}}</td>
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
