@@ -1,5 +1,5 @@
 import { CategoriaDTO } from './../../interfaces/categoria.interface';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Producto } from '../../interfaces/Producto.interface';
 import { AlmacenService } from '../../services/almacen.service';
 @Component({
@@ -9,36 +9,23 @@ import { AlmacenService } from '../../services/almacen.service';
 })
 
 
-export class ProductoComponent {
-  nombre : string ="Pepsi";
-  stock : number = 1;
-  listaCategorias: CategoriaDTO[] = [];
-  productos : string[] = ["Galletas", "Chocolate", "Pulparindo"]
+export class ProductoComponent implements OnInit{
 
-  constructor( private almacenService : AlmacenService){
-    this.almacenService.getCategorias().subscribe((categorias => {
-      this.listaCategorias = categorias;
-      console.log(this.listaCategorias);
-    }
-    ));
-  }
-  comprarProducto(): void{
-    this.stock--;
-  }
+  constructor(){}
+
 
   @Input()
-  Categoria : CategoriaDTO = {
-    id: 0,
-    nombreCategoria: "",
+  producto : Producto = {
+    nombre: "",
+    oferta : false,
+    precio : 0,
+    precioOferta : 0,
+    stock : 0,
+  };
+  ngOnInit(): void {
+
   }
-  @Input()
-  Producto : Producto ={
-    nombre :"",
-    oferta: false,
-    precio: 0,
-    precioOferta:0,
-    stock:0,
-    fecha: new Date()
-  }
+
+
 }
 

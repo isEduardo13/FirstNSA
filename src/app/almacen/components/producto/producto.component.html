@@ -1,44 +1,43 @@
-<!-- <p>Producto stock!</p>
-<h1>{{nombre}}</h1>
-<h5>{{stock}}</h5>
-@if (stock == 0) {
-  <h1>Producto sin stock</h1>
-}@else{
-  <h5>Stock del producto: {{stock}}</h5>
-  <button (click)="comprarProducto()">Comprar</button>
-} -->
 
-<div class="card mb-3" style="max-width: 540px;">
+<!-- <h4>Nombre del producto: {{ nombre }}</h4>
+@if(stock == 0){
+<h4>No hay suficiente stock</h4>
+} @else{
+
+} -->
+<!-- <div *ngIf="stock > 0; else divSinStock">
+  <h5>Stock del producto: {{ stock }}</h5>
+  <button (click)="comprarProducto()">Comprar producto</button>
+</div>
+<ng-template #divSinStock>
+  <h4>Productos sin stock</h4>
+</ng-template>
+
+<ol>
+  <li *ngFor="let p of productos">{{ p }}</li>
+</ol> -->
+
+<div class="card mb-3" style="max-width: 540px">
   <div class="row g-0">
     <div class="col-md-4">
-      <img [src]="Producto.imagen" class="img-fluid rounded-start" alt="{{Producto.nombre}}">
+      <img
+        src="{{ producto.imagen }}"
+        class="img-fluid rounded-start p-3"
+        alt="..."
+      />
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{Producto.nombre}}</h5>
-        <p class="card-text">Cantidad <span [ngClass]="{'text-danger': Producto.stock ===0, 'text-primary': Producto.stock > 0}">{{Producto.stock}}</span> </p>
-        <p class="card-text"><small class="text-muted">{{Producto.precio | currency}}</small></p>
-        <p><small> {{Producto.fecha | date}}</small> </p>
-        <button class="btn-primary">Comprar</button>
+        <h5 class="card-title">{{ producto.nombre }}</h5>
+        <p class="card-text">
+          Cantidad: <span [ngClass]="{'text-danger':producto.stock === 0, 'text-primary': producto.stock>0}">{{ producto.stock }}</span>
+        </p>
+        <p class="card-text">
+          <small class="text-body-secondary">{{producto.fecha | date}}</small>
+          <br>
+          <small class="text-body-secondary">{{producto.precio | currency}}</small>
+        </p>
       </div>
     </div>
   </div>
-</div>
-<div class="container">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let Categoria of listaCategorias">
-        <td>{{Categoria.id}}</td>
-        <td>{{Categoria.nombreCategoria}}</td>
-        <td>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>

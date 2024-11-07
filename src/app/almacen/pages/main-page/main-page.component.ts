@@ -9,15 +9,15 @@ import { CategoriaDTO } from '../../interfaces/categoria.interface';
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent implements OnInit{
-listaProductos: Producto []=[];
 listaCategorias: CategoriaDTO[] = [];
+listaProductos: Producto[] = [];
 
-constructor( private almacenService : AlmacenService){
+constructor(private almacenService: AlmacenService) {
   this.listaProductos = almacenService.listaProductos;
-  this.almacenService.getCategorias().subscribe((categorias => {
+  this.almacenService.getCategorias().subscribe(categorias => {
     this.listaCategorias = categorias;
-  }
-  ));
+    console.log(categorias);
+  });
 }
 
 ngOnInit(): void {

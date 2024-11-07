@@ -1,28 +1,19 @@
-<!-- <p>Ejemplo ejercicio 1!</p>
+<app-almacen-producto *ngFor="let p of listaProductos" [producto]="p">
+</app-almacen-producto>
 
-<ol>
-  <li *ngFor="let p of listaProductos" class="card mb-3 custom-card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title custom-card-title">{{p.nombre}}</h5>
-      <p class="card-text custom-card-text">Stock: {{p.stock}}</p>
-      <p class="card-text">
-        <span class=""><del></del></span>
-        <br>
-        @if (p.oferta == true) {
-          <span class="text-success">{{p.precioOferta}}</span>
-          <br>
-          <span class="text-danger"><del>{{p.precio}}</del></span>
-        <!-- }@else{ -->
-          <!-- <span class="text-success">{{p.precio}}</span>
-
-        }
-
-      </p>
-      <button class="btn btn-primary">Comprar</button>
-    </div>
-  </li>
-</ol> -->
-
-
- <app-almacen-producto  *ngFor="let c of listaCategorias" [Categoria]= "c"></app-almacen-producto>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre Categoria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of listaCategorias; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ c.id }}</td>
+      <td>{{ c.nombreCategoria}}</td>
+    </tr>
+  </tbody>
+</table>
